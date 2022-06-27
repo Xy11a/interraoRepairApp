@@ -1,0 +1,27 @@
+#title {
+  margin: auto;
+  width: 400px;
+  height: 50px;
+  border: 1px solid gray;
+  line-height: 50px;
+  text-align: center;
+}
+
+
+#login-form {
+  width: 396px;
+  height: 200px;
+  margin-top: 50px;
+  text-align: center
+}
+
+
+#start-block {
+  width: 400px;
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  border: 1px solid gray;
+}

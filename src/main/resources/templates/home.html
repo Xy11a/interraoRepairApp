@@ -5,10 +5,27 @@
     <title>RepairApp</title>
     <h1>https://betacode.net/11545/spring-boot-and-thymeleaf</h1>
     <h1>https://sysout.ru/vvedenie-v-thymeleaf/</h1>
+    <link rel="stylesheet" type="text/css" href="/static/css/home.css">
 </head>
 <body id="samples">
 <div th:replace="menu :: menu"></div>
 <div id="contend" class="container"></div>
+
+
+<div id="start-block">
+    <div id="title">Ремонт электроники ИНТЕРРАО</div>
+
+    <div id="login-form">
+        <form id="form">
+            <label for="fname">Логин:</label><br>
+            <input type="text" id="fname" name="fname" value=""><br>
+            <label for="lname">Пароль:</label><br>
+            <input type="password" id="lname" name="lname" value=""><br><br>
+            <input type="submit" value="Войти">
+            <h4> <a href="/registration">Зарегистрироваться</a></h4>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
