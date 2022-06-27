@@ -1,22 +1,3 @@
-#title {
-  margin: auto;
-  width: 400px;
-  height: 50px;
-  border: 1px solid gray;
-  line-height: 50px;
-  text-align: center;
-}
-
-
-#login-form {
-  width: 396px;
-  height: 200px;
-  margin-top: 50px;
-  text-align: center;
-
-}
-
-
 #start-block {
   width: 400px;
   height: 300px;
@@ -24,5 +5,23 @@
   flex-direction: row;
   flex-wrap: wrap;
   margin: auto;
+  margin-top: 100px;
   border: 1px solid gray;
+}
+
+#title {
+  width: 400px;
+  height: 50px;
+  border: 1px solid gray;
+  line-height: 50px;
+  text-align: center;
+}
+
+#form
+{
+  width: 396px;
+  height: 200px;
+  margin-top: 50px;
+  text-align: center;
+
 }
