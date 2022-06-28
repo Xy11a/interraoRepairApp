@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin page</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/admin.css">
+</head>
+<body>
+<div id="control-title">Контрольная панель администрирования</div>
+<div id="links-status">
+    <div id="links"><a href="/">На главную</a></div>
+    <div id="status">Work in progress</div>
+</div>
+<div id="full-block">
+    <div>
+        <table>
+            <thead>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Role</th>
+            </thead>
+            <tr th:each="user :@{allUsers}">
+                <td th:utext="@{user.id}"></td>
+                <td th:utext="@{user.username}"></td>
+                <td th:utext="@{user.password}"></td>
+                <td th:each = "role :@{user.roles}" ></td>
+                <td>
+                    <form th:action="@{/admin}" method="POST">
+                        <input type="hidden" name="userId" value="@{user.id}" />
+                        <input type="hidden" name="action" value="delete" />
+                        <button type="submit">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
