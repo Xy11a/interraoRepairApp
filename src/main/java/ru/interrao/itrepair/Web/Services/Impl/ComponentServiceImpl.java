@@ -1,5 +1,6 @@
 package ru.interrao.itrepair.Web.Services.Impl;
 
+import org.springframework.stereotype.Service;
 import ru.interrao.itrepair.Web.Entity.ElectroComponents.Component;
 import ru.interrao.itrepair.Web.Repository.ComponentRepository;
 import ru.interrao.itrepair.Web.Services.ComponentService;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ComponentServiceImpl implements ComponentService {
     @Autowired
     private ComponentRepository repository;

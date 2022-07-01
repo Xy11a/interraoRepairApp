@@ -11,8 +11,8 @@ import java.util.Random;
 @Controller
 public class TitleController {
     @RequestMapping(value = "/" )
-    public String loadPage(Model model)
+    public String loadPage()
     {
-        return "home";
+        return "index";
     }
 }

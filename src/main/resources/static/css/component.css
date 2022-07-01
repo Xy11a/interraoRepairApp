@@ -1,0 +1,19 @@
+#control-title {
+  margin: auto;
+  width: 90%;
+  height: 50px;
+  border: 1px solid gray;
+  line-height: 50px;
+  text-align: center;
+}
+
+#links-status
+{
+  display: flex;
+  margin: auto;
+  width: 90%;
+  height: 50px;
+  border: 1px solid gray;
+  line-height: 50px;
+  text-align: center;
+}
