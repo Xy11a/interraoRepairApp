@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Component</title>
+    <link th:href="@{/css/component.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="control-title">Добавить новый электронный компонент</div>
+<div id="links-status">
+    <div id="list-links">
+        <a href="/">На главную</a>
+        <a href="/components">К списку компонентов</a>
+    </div>
+</div>
+<div id="full-block">
+    <form action ="#" th:action="@{/components/new}" method="post" th:object="${ComponentObj}">
+        <label>Тип компонента:</label>
+        <select th:field ="*{type}">
+            <option th:each="p : ${listOfTypes}" th:value="${p}" th:text="${p}" />
+        </select><br>
+        <label>Название</label>
+        <input type="text" th:field = "*{name}"><br>
+        <label>Значения</label>
+        <input type="text" th:field = "*{values}"><br>
+        <label>Количество</label>
+        <input type="number" th:field = "*{amount}"><br>
+        <button type="submit">Добавить компонент</button>
+    </form>
+</div>
+</body>
+</html>

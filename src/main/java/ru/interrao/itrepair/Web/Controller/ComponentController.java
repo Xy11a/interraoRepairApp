@@ -4,7 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.interrao.itrepair.Web.Entity.ElectroComponents.Component;
+import ru.interrao.itrepair.Web.Entity.ElectroComponents.ComponentEnum;
 import ru.interrao.itrepair.Web.Services.Impl.ComponentServiceImpl;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 @Controller
 public class ComponentController
@@ -12,18 +17,40 @@ public class ComponentController
     @Autowired
     ComponentServiceImpl service;
 
-   @RequestMapping(value ="/components/", method = RequestMethod.GET)
+   @RequestMapping(value ="/components", method = RequestMethod.GET)
     public String defaultPage(Model model)
    {
        model.addAttribute("allComponents", service.getAll());
-       return "CompPage";
+       return "components/CompPage";
    }
 
-    @PostMapping("/components/")
-    public String deleteUser(@RequestParam(required = true,defaultValue = "") Integer userId, @RequestParam(required = true,defaultValue = "") String action, Model model)
+    @PostMapping("/components")
+    public String deleteComponent(@RequestParam(required = true,defaultValue = "") Integer userId, @RequestParam(required = true,defaultValue = "") String action, Model model)
     {
         if(action.equals("delete")) service.deleteById(userId);
-        return "redirect:/components/";
+        return "redirect:/components";
+    }
+
+    @GetMapping("/components/new")
+    public String createComponent(Model model)
+    {
+        Component comp = new Component();
+        model.addAttribute("ComponentObj",comp);
+        model.addAttribute("listOfTypes", Arrays.asList(ComponentEnum.values()));
+        return "components/NewCompPage";
+    }
+
+    @PostMapping("/components/new")
+    public String submitForm(@ModelAttribute("ComponentObj") Component comp) {
+        System.out.println(comp);
+        service.save(comp);
+        return "redirect:/components";
+    }
+
+    @PostMapping("/components/update")
+    public String update(@RequestParam(required = true,defaultValue = "") Integer compId, Model model)
+    {
+
     }
 }
 

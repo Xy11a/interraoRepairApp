@@ -10,6 +10,7 @@
 #links-status
 {
   display: flex;
+  justify-content: space-between;
   margin: auto;
   width: 90%;
   height: 50px;
@@ -17,3 +18,43 @@
   line-height: 50px;
   text-align: center;
 }
+#list-links
+{
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+
+#list-status
+{
+  margin: auto;
+  width: 50%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+
+
+#full-block {
+  margin: auto;
+  width: 90%;
+  border: 1px solid gray;
+  line-height: 50px;
+  text-align: center;
+}
+
+#comp-table
+{
+    width: 100%;
+}
+
+
+
+
+
+
+
