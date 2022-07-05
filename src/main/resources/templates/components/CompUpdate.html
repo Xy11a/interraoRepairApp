@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Component</title>
+    <link th:href="@{/css/component.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="control-title">Изменить электронный компонент</div>
+<div id="links-status">
+    <div id="list-links">
+        <a href="/">На главную</a>
+        <a href="/components">К списку компонентов</a>
+    </div>
+</div>
+<div id="full-block">
+    <form action ="#" th:action="@{/components/update}" method="post" th:object="${updateComp}">
+        <input type="hidden" th:field="*{id}" th:value="updateComp.id">
+        <label>Тип компонента:</label>
+        <input type="text" th:field = "*{type}" th:value="updateComp.type" readonly><br>
+        <label>Название:</label>
+        <input type="text" th:field = "*{name}" th:value="updateComp.name"><br>
+        <label>Значения:</label>
+        <input type="text" th:field = "*{values}" th:value="updateComp.values"><br>
+        <label>Количество:</label>
+        <input type="number" th:field = "*{amount}" th:value="updateComp.amount"><br>
+        <button type="submit">Изменить компонент</button>
+    </form>
+</div>
+</body>
+</html>

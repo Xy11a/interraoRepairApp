@@ -16,35 +16,35 @@
 </div>
 
 <div id="full-block">
-        <table id="comp-table" border ="1" >
-            <thead>
-            <th width="25">ID</th>
-            <th >Type</th>
-            <th>Name</th>
-            <th >Values</th>
-            <th >Amount</th>
-            </thead>
-            <tr th:each="component :${allComponents}">
-                <td th:utext="${component.id}"></td>
-                <td th:utext="${component.type}"></td>
-                <td th:utext="${component.name}"></td>
-                <td th:utext="${component.values}"></td>
-                <td th:utext="${component.amount}"></td>
-                <td width="100">
-                    <form action="/components/new" target="GET">
-                        <input type ="hidden" name="compId" th:value="${component.id}">
-                        <button>Редактировать</button>
-                    </form>
-                </td>
-                <td width="100">
-                    <form th:action="@{/components}" method="POST">
-                        <input type="hidden" name="userId" th:value="${component.id}"/>
-                        <input type="hidden" name="action" value="delete"/>
-                        <button type="submit">Удалить</button>
-                    </form>
-                </td>
-            </tr>
-        </table>
+    <table id="comp-table" border="1">
+        <thead>
+        <th width="25">ID</th>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Values</th>
+        <th>Amount</th>
+        </thead>
+        <tr th:each="component :${allComponents}">
+            <td th:utext="${component.id}"></td>
+            <td th:utext="${component.type}"></td>
+            <td th:utext="${component.name}"></td>
+            <td th:utext="${component.values}"></td>
+            <td th:utext="${component.amount}"></td>
+            <td width="100">
+                <form action="/components/update" target="GET">
+                    <input type="hidden" name="compId" th:value="${component.id}">
+                    <button>Редактировать</button>
+                </form>
+            </td>
+            <td width="100">
+                <form th:action="@{/components}" method="POST">
+                    <input type="hidden" name="userId" th:value="${component.id}"/>
+                    <input type="hidden" name="action" value="delete"/>
+                    <button type="submit">Удалить</button>
+                </form>
+            </td>
+        </tr>
+    </table>
 </div>
 
 </body>

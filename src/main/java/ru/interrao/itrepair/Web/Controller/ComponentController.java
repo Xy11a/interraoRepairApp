@@ -47,10 +47,21 @@ public class ComponentController
         return "redirect:/components";
     }
 
-    @PostMapping("/components/update")
-    public String update(@RequestParam(required = true,defaultValue = "") Integer compId, Model model)
-    {
 
+    @GetMapping("/components/update")
+    public String updatePage(@RequestParam(required = true,defaultValue = "") Integer compId, Model model)
+    {
+        model.addAttribute("updateComp",service.get(compId));
+        return "components/CompUpdate";
+    }
+
+
+    @PostMapping("/components/update")
+    public String updateReq(@ModelAttribute("updateComp") Component comp, Model model)
+    {
+        System.out.println(comp);
+        service.update(comp);
+        return "redirect:/components";
     }
 }
 
