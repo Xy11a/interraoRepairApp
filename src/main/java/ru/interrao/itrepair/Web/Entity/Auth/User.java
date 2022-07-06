@@ -19,8 +19,10 @@ public class User implements UserDetails {
     @GeneratedValue
     private int id;
 
+    @Column(name = "username")
     private String username;
 
+    @Column(name = "password")
     private String password;
 
     @Transient
