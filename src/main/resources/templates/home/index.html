@@ -15,11 +15,11 @@
     <div id="title">Ремонт электроники ИНТЕРРАО</div>
 
     <div id="login-form">
-        <form id="form">
-            <label for="fname">Логин:</label><br>
-            <input type="text" id="fname" name="fname" value=""><br>
-            <label for="lname">Пароль:</label><br>
-            <input type="password" id="lname" name="lname" value=""><br><br>
+        <form id="form" th:action="@{/login}" method="post">
+            <label>Логин:</label><br>
+            <input type="text" name="username" value=""><br>
+            <label>Пароль:</label><br>
+            <input type="password" name="password" value=""><br><br>
             <input type="submit" value="Войти">
             <h4> <a href="/registration">Зарегистрироваться</a></h4>
         </form>

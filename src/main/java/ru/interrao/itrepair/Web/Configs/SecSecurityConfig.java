@@ -10,11 +10,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import ru.interrao.itrepair.Web.Services.Impl.UserService;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableWebSecurity
 public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserService userService;
+
+    @Autowired
+    private DataSource dataSourse;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -31,7 +36,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/registration").not().fullyAuthenticated()
                 //Доступ только для пользователей с ролью Администратор
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/news").hasRole("USER")
+                .antMatchers("/components/**").hasRole("USER")
                 //Доступ разрешен всем пользователей
                 .antMatchers("/", "/resources/**").permitAll()
                 .antMatchers("/js/**", "/css/**").permitAll()
@@ -41,8 +46,11 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 //Настройка для входа в систему
                 .formLogin()
                 .loginPage("/login")
+                .failureUrl("/login&fucked=true")
+                .usernameParameter("username")
+                .passwordParameter("password")
                 //Перенарпавление на главную страницу после успешного входа
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/components")
                 .permitAll()
                 .and()
                 .logout()
@@ -52,6 +60,11 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
+
+        auth.jdbcAuthentication()
+        .dataSource(dataSourse).passwordEncoder(bCryptPasswordEncoder())
+        .usersByUsernameQuery("SELECT username, password from user where username = ?")
+        .authoritiesByUsernameQuery("select u.username, r.name from user u, role r, user_roles ur\n" +
+                "where ur.user_id = u.id and ur.roles_id = r.id");
     }
 }

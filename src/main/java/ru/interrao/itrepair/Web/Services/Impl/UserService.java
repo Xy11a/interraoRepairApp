@@ -27,6 +27,9 @@ public class UserService implements UserDetailsService {
     @Autowired
     RoleRepository roleRepository;
 
+    @Autowired
+    BCryptPasswordEncoder encoder;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
@@ -54,8 +57,8 @@ public class UserService implements UserDetailsService {
             return false;
         }
 
-        user.setRoles(Collections.singleton(new Role(1, "ROLE_USER")));
-        user.setPassword(user.getPassword());
+        user.setRoles(Collections.singleton(roleRepository.findById(1).get()));
+        user.setPassword(encoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
     }

@@ -5,11 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class TitleController {
-    @RequestMapping(value = "/login" )
-    public String loadPage()
-    {
-        return "home/index";
-    }
 
     @RequestMapping(value = "/" )
     public String home()
