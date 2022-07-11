@@ -6,36 +6,31 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.interrao.itrepair.Web.Entity.ElectroComponents.Component;
 import ru.interrao.itrepair.Web.Entity.ElectroComponents.ComponentEnum;
-import ru.interrao.itrepair.Web.Services.Impl.ComponentServiceImpl;
+import ru.interrao.itrepair.Web.Services.ServiceImplementations.ComponentServiceImpl;
 
 import java.util.Arrays;
-import java.util.Collection;
 
 @Controller
-public class ComponentController
-{
+public class ComponentController {
     @Autowired
     ComponentServiceImpl service;
 
-   @RequestMapping(value ="/components", method = RequestMethod.GET)
-    public String defaultPage(Model model)
-   {
-       model.addAttribute("allComponents", service.getAll());
-       return "components/CompPage";
-   }
+    @RequestMapping(value = "/components", method = RequestMethod.GET)
+    public String defaultPage(Model model) {
+        model.addAttribute("allComponents", service.getAll());
+        return "components/CompPage";
+    }
 
     @PostMapping("/components")
-    public String deleteComponent(@RequestParam(required = true,defaultValue = "") Integer userId, @RequestParam(required = true,defaultValue = "") String action, Model model)
-    {
-        if(action.equals("delete")) service.deleteById(userId);
+    public String deleteComponent(@RequestParam(required = true, defaultValue = "") Integer userId, @RequestParam(required = true, defaultValue = "") String action, Model model) {
+        if (action.equals("delete")) service.deleteById(userId);
         return "redirect:/components";
     }
 
     @GetMapping("/components/new")
-    public String createComponent(Model model)
-    {
+    public String createComponent(Model model) {
         Component comp = new Component();
-        model.addAttribute("ComponentObj",comp);
+        model.addAttribute("ComponentObj", comp);
         model.addAttribute("listOfTypes", Arrays.asList(ComponentEnum.values()));
         return "components/NewCompPage";
     }
@@ -49,16 +44,14 @@ public class ComponentController
 
 
     @GetMapping("/components/update")
-    public String updatePage(@RequestParam(required = true,defaultValue = "") Integer compId, Model model)
-    {
-        model.addAttribute("updateComp",service.get(compId));
+    public String updatePage(@RequestParam(required = true, defaultValue = "") Integer compId, Model model) {
+        model.addAttribute("updateComp", service.get(compId));
         return "components/CompUpdate";
     }
 
 
     @PostMapping("/components/update")
-    public String updateReq(@ModelAttribute("updateComp") Component comp, Model model)
-    {
+    public String updateReq(@ModelAttribute("updateComp") Component comp, Model model) {
         System.out.println(comp);
         service.update(comp);
         return "redirect:/components";

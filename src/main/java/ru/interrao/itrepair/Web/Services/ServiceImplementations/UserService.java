@@ -1,13 +1,11 @@
-package ru.interrao.itrepair.Web.Services.Impl;
+package ru.interrao.itrepair.Web.Services.ServiceImplementations;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import ru.interrao.itrepair.Web.Entity.Auth.Role;
 import ru.interrao.itrepair.Web.Entity.Auth.User;
 import ru.interrao.itrepair.Web.Repository.RoleRepository;
 import ru.interrao.itrepair.Web.Repository.UserRepository;

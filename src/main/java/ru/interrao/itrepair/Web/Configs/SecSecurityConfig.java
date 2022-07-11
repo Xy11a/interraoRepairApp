@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import ru.interrao.itrepair.Web.Services.Impl.UserService;
+import ru.interrao.itrepair.Web.Services.ServiceImplementations.UserService;
 
 import javax.sql.DataSource;
 
@@ -38,7 +38,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/components/**").hasRole("USER")
                 //Доступ разрешен всем пользователей
-                .antMatchers("/", "/resources/**").permitAll()
+                .antMatchers( "/resources/**").permitAll()
                 .antMatchers("/js/**", "/css/**").permitAll()
                 //Все остальные страницы требуют аутентификации
                 .anyRequest().authenticated()
@@ -50,21 +50,20 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username")
                 .passwordParameter("password")
                 //Перенарпавление на главную страницу после успешного входа
-                .defaultSuccessUrl("/components")
+                .defaultSuccessUrl("/")
                 .permitAll()
                 .and()
                 .logout()
                 .permitAll()
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/login");
     }
 
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-
         auth.jdbcAuthentication()
         .dataSource(dataSourse).passwordEncoder(bCryptPasswordEncoder())
-        .usersByUsernameQuery("SELECT username, password from user where username = ?")
+        .usersByUsernameQuery("SELECT username, password, 'true' as enabled from user where username = ?")
         .authoritiesByUsernameQuery("select u.username, r.name from user u, role r, user_roles ur\n" +
-                "where ur.user_id = u.id and ur.roles_id = r.id");
+                "where ur.user_id = u.id and ur.roles_id = r.id and u.username = ?");
     }
 }

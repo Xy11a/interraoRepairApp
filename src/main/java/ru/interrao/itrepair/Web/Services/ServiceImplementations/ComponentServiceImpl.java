@@ -1,4 +1,4 @@
-package ru.interrao.itrepair.Web.Services.Impl;
+package ru.interrao.itrepair.Web.Services.ServiceImplementations;
 
 import org.springframework.stereotype.Service;
 import ru.interrao.itrepair.Web.Entity.ElectroComponents.Component;

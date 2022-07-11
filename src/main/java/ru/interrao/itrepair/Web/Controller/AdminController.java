@@ -1,6 +1,6 @@
 package ru.interrao.itrepair.Web.Controller;
 
-import ru.interrao.itrepair.Web.Services.Impl.UserService;
+import ru.interrao.itrepair.Web.Services.ServiceImplementations.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
