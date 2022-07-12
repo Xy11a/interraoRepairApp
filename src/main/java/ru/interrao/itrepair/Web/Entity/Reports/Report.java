@@ -19,16 +19,16 @@ public class Report {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "Владелец")
+    @Column(name = "Owner")
     private User owner;
 
-    @Column(name = "Дата заявки")
+    @Column(name = "Date_Report")
     private Date date;
 
-    @Column(name = "Заявка")
+    @Column(name = "Report")
     private String report;
 
-    @Column(name = "Статус")
+    @Column(name = "Status")
     @Enumerated(EnumType.STRING)
     ReportStatusEnum status;
 

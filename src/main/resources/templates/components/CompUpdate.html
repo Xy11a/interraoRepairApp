@@ -1,31 +1,60 @@
-<!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Update Component</title>
-    <link th:href="@{/css/component.css}" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <link th:href="@{/css/start.css}" rel="stylesheet" type="text/css" href="/static/css/start.css">
 </head>
 <body>
-<div id="control-title">Изменить электронный компонент</div>
-<div id="links-status">
-    <div id="list-links">
-        <a href="/">На главную</a>
-        <a href="/components">К списку компонентов</a>
+
+<div class="header">
+    <h1>Component Update</h1>
+    <p>Spring, MySQL, HTML, CSS</p>
+</div>
+
+<div class="topnav">
+    <a href="/">На главную</a>
+    <a href="/components">Создать заявку</a>
+    <a href="/logout" style="float:right">Выход</a>
+    <span style="display: block; color: #f2f2f2;
+     padding: 14px 16px; float:right; text-decoration: none;" th:utext="${CurrentUser.username}"></span>
+</div>
+
+<div class="row">
+
+    <div class="leftcolumn">
+        <div class="card">
+            <div class="fakeimg">
+                <form action ="#" th:action="@{/components/update}" method="post" th:object="${updateComp}">
+                    <input type="hidden" th:field="*{id}" th:value="updateComp.id">
+                    <label>Тип компонента:</label>
+                    <input type="text" th:field = "*{type}" th:value="updateComp.type" readonly><br>
+                    <label>Название:</label>
+                    <input type="text" th:field = "*{name}" th:value="updateComp.name"><br>
+                    <label>Значения:</label>
+                    <input type="text" th:field = "*{values}" th:value="updateComp.values"><br>
+                    <label>Количество:</label>
+                    <input type="number" th:field = "*{amount}" th:value="updateComp.amount"><br>
+                    <button type="submit">Изменить компонент</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="rightcolumn">
+        <div class="card">
+            <h2>Обо мне</h2>
+            <div class="fakeimg" style="height:100px;"><img src="@{/images/IRNITU.jpg}" width="100%"
+                                                            height="100%">
+            </div>
+            <p>Hello, my name is Vladislav<br>I am student of INRTU</p>
+        </div>
     </div>
 </div>
-<div id="full-block">
-    <form action ="#" th:action="@{/components/update}" method="post" th:object="${updateComp}">
-        <input type="hidden" th:field="*{id}" th:value="updateComp.id">
-        <label>Тип компонента:</label>
-        <input type="text" th:field = "*{type}" th:value="updateComp.type" readonly><br>
-        <label>Название:</label>
-        <input type="text" th:field = "*{name}" th:value="updateComp.name"><br>
-        <label>Значения:</label>
-        <input type="text" th:field = "*{values}" th:value="updateComp.values"><br>
-        <label>Количество:</label>
-        <input type="number" th:field = "*{amount}" th:value="updateComp.amount"><br>
-        <button type="submit">Изменить компонент</button>
-    </form>
+
+
+<div class="footer">
+    <h2>Footer</h2>
 </div>
+
 </body>
 </html>

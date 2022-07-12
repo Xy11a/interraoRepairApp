@@ -13,7 +13,7 @@
 
 <div class="topnav">
     <a href="/">На главную</a>
-    <a href="/reports/addRole">Назначить роль</a>
+    <a href="/reports/new">Создать заявку</a>
     <a href="/logout" style="float:right">Выход</a>
     <span style="display: block; color: #f2f2f2;
      padding: 14px 16px; float:right; text-decoration: none;" th:utext="${CurrentUser.username}"></span>
@@ -24,23 +24,22 @@
     <div class="leftcolumn">
         <div class="card">
             <div class="fakeimg">
-                <table id="table">
+                <span th:if="${CurrentReports!=null  or CurrentReports.isEmpty()}"><h2>Нет заявок на ремонт</h2></span>
+                <table th:unless="${CurrentReports.isEmpty()}" id="table" border="1">
                     <thead>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>Role</th>
+                    <th>Заявка</th>
+                    <th>Дата</th>
+                    <th>Статус</th>
+                    <th></th>
                     </thead>
-                    <tr th:each="user :@{allUsers}">
-                        <td th:utext="@{user.id}"></td>
-                        <td th:utext="@{user.username}"></td>
-                        <td th:utext="@{user.password}"></td>
-                        <td th:each="role :@{user.roles}"></td>
-                        <td>
-                            <form th:action="@{/admin}" method="POST">
-                                <input type="hidden" name="userId" value="@{user.id}"/>
-                                <input type="hidden" name="action" value="delete"/>
-                                <button type="submit">Удалить</button>
+                    <tr th:each="Report :${CurrentReports}">
+                        <td th:utext="${Report.report}"></td>
+                        <td width="200" th:utext="${Report.date}"></td>
+                        <td width="200" th:utext="${Report.status}"></td>
+                        <td width="50">
+                            <form action="/reports/update" target="GET">
+                                <input type="hidden" name="compId" th:value="${Report.id}">
+                                <button>Редактировать</button>
                             </form>
                         </td>
                     </tr>

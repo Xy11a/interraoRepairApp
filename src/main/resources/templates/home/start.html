@@ -26,7 +26,21 @@
         <div class="card">
             <h2>Мои заявки</h2>
             <h5>ОИТиТ, 2022г</h5>
-            <div class="fakeimg" style="height:200px;">Image</div>
+            <div class="fakeimg" style="height:200px;">
+                <span th:if="${CurrentReports.isEmpty()}"><h2>Нет заявок на ремонт</h2></span>
+                <table th:unless="${CurrentReports.isEmpty()}" id="comp-table" border="1">
+                    <thead>
+                    <th>Заявка</th>
+                    <th>Дата</th>
+                    <th>Статус</th>
+                    </thead>
+                    <tr th:each="report :${CurrentReports}">
+                        <td th:utext="${CurrentReports.report}"></td>
+                        <td th:utext="${CurrentReports.date}"></td>
+                        <td th:utext="${CurrentReports.status}"></td>
+                    </tr>
+                </table>
+            </div>
             <p>Внимание!</p>
             <p>Заявки обработываются в течении 30 минут.</p>
         </div>
@@ -44,7 +58,8 @@
     <div class="rightcolumn">
         <div class="card">
             <h2>Обо мне</h2>
-            <div class="fakeimg" style="height:100px;"><img src="/static/images/IRNITU.jpg" width="100%" height="100%"></div>
+            <div class="fakeimg" style="height:100px;"><img src="@{/images/IRNITU.jpg}" width="100%" height="100%">
+            </div>
             <p>Hello, my name is Vladislav<br>I am student of INRTU</p>
         </div>
         <div class="card">

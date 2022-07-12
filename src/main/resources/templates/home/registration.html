@@ -1,26 +1,47 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Registration</title>
-    <link th:href="@{/css/registration.css}" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <link th:href="@{/css/start.css}" rel="stylesheet" type="text/css" href="/static/css/start.css">
 </head>
 <body>
-<div id="start-block">
-    <div id="title">Регистрация</div>
-    <form id="form" th:action="@{/registration}" th:object="${userForm}" method="POST">
-        <label >Логин:</label><br>
-        <input type="text" th:field="*{username}"><br>
-        <label >Пароль:</label><br>
-        <input type="text" th:field="*{password}"><br>
-        <label >Повторите пароль:</label><br>
-        <input type="password" th:field="*{passwordConfirm}"><br>
-        <label></label><br>
-        <input type="submit" value="Зарегистрироваться">
-    </form>
+
+<div class="header">
+    <h1>Registration</h1>
+    <p>Spring, MySQL, HTML, CSS</p>
+</div>
+
+<div class="topnav">
+    <a href="/login" style="float:right">Вход</a>
+</div>
+
+<div class="row">
+
+    <div class="leftcolumn" style="width:100%" >
+        <div class="card" style="text-align: center;">
+            <div class="fakeimg" style="width:40%;margin-left:50%;margin-right:50%;">
+                <form id="form" th:action="@{/registration}" th:object="${userForm}" method="POST">
+                    <label >Логин:</label><br>
+                    <input type="text" th:field="*{username}"><br>
+                    <label >Пароль:</label><br>
+                    <input type="text" th:field="*{password}"><br>
+                    <label >Повторите пароль:</label><br>
+                    <input type="password" th:field="*{passwordConfirm}"><br>
+                    <label></label><br>
+                    <input type="submit" value="Зарегистрироваться" style="background-color: #333; color:white;">
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 
+<div class="footer">
+    <h2></h2>
+</div>
 
 </body>
 </html>
+
+
+

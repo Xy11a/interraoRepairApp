@@ -1,30 +1,44 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>RepairApp</title>
-    <h1>https://betacode.net/11545/spring-boot-and-thymeleaf</h1>
-    <h1>https://sysout.ru/vvedenie-v-thymeleaf/</h1>
-    <link th:href="@{/css/home.css}" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <link th:href="@{/css/start.css}" rel="stylesheet" type="text/css" href="/static/css/start.css">
 </head>
-<body id="samples">
+<body>
 
+<div class="header">
+    <h1>Ремонт электроники ИНТЕРРАО</h1>
+    <p>Spring, MySQL, HTML, CSS</p>
+</div>
 
+<div class="topnav">
+    <a href="/registration" style="float:right">Регистрация</a>
+</div>
 
-<div id="start-block">
-    <div id="title">Ремонт электроники ИНТЕРРАО</div>
-
-    <div id="login-form">
-        <form id="form" th:action="@{/login}" method="post">
-            <label>Логин:</label><br>
-            <input type="text" name="username" value=""><br>
-            <label>Пароль:</label><br>
-            <input type="password" name="password" value=""><br><br>
-            <input type="submit" value="Войти">
-            <h4> <a href="/registration">Зарегистрироваться</a></h4>
-        </form>
+<div class="row">
+    <div class="leftcolumn">
+        <div class="card">
+            <div class="fakeimg">
+                <form id="form" th:action="@{/login}" method="post">
+                    <label>Логин:</label><br>
+                    <input type="text" name="username" value=""><br>
+                    <label>Пароль:</label><br>
+                    <input type="password" name="password" value=""><br><br>
+                    <input type="submit" value="Войти">
+                    <h4> <a href="/registration">Зарегистрироваться</a></h4>
+                </form>
+            </div>
+        </div>
     </div>
+</div>
+
+
+<div class="footer">
+    <h2></h2>
 </div>
 
 </body>
 </html>
+
+
+
