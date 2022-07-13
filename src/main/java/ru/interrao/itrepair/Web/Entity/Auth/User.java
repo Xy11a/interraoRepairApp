@@ -15,7 +15,8 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements UserDetails {
+public class User implements UserDetails
+{
     @Id
     @GeneratedValue
     private int id;

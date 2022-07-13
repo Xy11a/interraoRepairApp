@@ -7,7 +7,7 @@
 <body>
 
 <div class="header">
-    <h1>Registration</h1>
+    <h1>Регистрация</h1>
     <p>Spring, MySQL, HTML, CSS</p>
 </div>
 
@@ -19,7 +19,7 @@
 
     <div class="leftcolumn" style="width:100%" >
         <div class="card" style="text-align: center;">
-            <div class="fakeimg" style="width:40%;margin-left:50%;margin-right:50%;">
+            <div class="fakeimg" style="width:40%;margin-left:30%;margin-right:50%;">
                 <form id="form" th:action="@{/registration}" th:object="${userForm}" method="POST">
                     <label >Логин:</label><br>
                     <input type="text" th:field="*{username}"><br>
@@ -28,7 +28,7 @@
                     <label >Повторите пароль:</label><br>
                     <input type="password" th:field="*{passwordConfirm}"><br>
                     <label></label><br>
-                    <input type="submit" value="Зарегистрироваться" style="background-color: #333; color:white;">
+                    <input type="submit" value="Зарегистрироваться" style="background-color: #333; color:white; width: 170px;">
                 </form>
             </div>
         </div>

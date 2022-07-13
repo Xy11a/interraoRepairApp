@@ -25,6 +25,7 @@ public class ComponentController {
         User user = userService.getUserByUsername(authentication.getName());
         model.addAttribute("CurrentUser",user);
         model.addAttribute("CurrentReports", service.getAll());
+        System.out.println(service.getAll());
         return "components/CompPage";
     }
 

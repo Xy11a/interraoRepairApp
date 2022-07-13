@@ -20,7 +20,7 @@ public class Report {
     private int id;
 
     @Column(name = "Owner")
-    private User owner;
+    private String owner;
 
     @Column(name = "Date_Report")
     private Date date;

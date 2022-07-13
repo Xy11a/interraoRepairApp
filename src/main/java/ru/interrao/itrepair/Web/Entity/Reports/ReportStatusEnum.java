@@ -2,10 +2,10 @@ package ru.interrao.itrepair.Web.Entity.Reports;
 
 public enum ReportStatusEnum
 {
-    CREATED("Конденсатор"),
-    PROCESS("Резистор"),
-    DONE("Трансформатор"),
-    REJECT("Диод"),
+    CREATED("Создана"),
+    PROCESS("В обработке"),
+    DONE("Выполнена"),
+    REJECT("Отклонена"),
     OTHER("Другое");
 
     private String name;

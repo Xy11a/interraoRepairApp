@@ -29,12 +29,14 @@
                     <th>ID</th>
                     <th>Username</th>
                     <th>Password</th>
+                    <th>Enabled</th>
                     <th>Role</th>
                     </thead>
                     <tr th:each="user :@{allUsers}">
                         <td th:utext="@{user.id}"></td>
                         <td th:utext="@{user.username}"></td>
                         <td th:utext="@{user.password}"></td>
+                        <td th:utext="@{user.isEnabled()}"></td>
                         <td th:each="role :@{user.roles}"></td>
                         <td>
                             <form th:action="@{/admin}" method="POST">
@@ -62,7 +64,7 @@
 
 
 <div class="footer">
-    <h2>Footer</h2>
+    <h2></h2>
 </div>
 
 </body>

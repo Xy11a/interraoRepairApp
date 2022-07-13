@@ -22,12 +22,11 @@ public class TitleController {
 
     @Autowired
     private ReportServiceImpl reportService;
-
     @RequestMapping(value = "/" )
     public String home(Authentication authentication, Model model)
     {
         User user = Userservice.getUserByUsername(authentication.getName());
-        List<Report> reports = reportService.getAll().stream().filter(report -> report.getOwner().equals(user)).collect(Collectors.toList());
+        List<Report> reports = reportService.getAll().stream().filter(report -> report.getOwner().equals(user.getUsername())).collect(Collectors.toList());
 
         System.out.println(reports);
         model.addAttribute("CurrentUser",user);

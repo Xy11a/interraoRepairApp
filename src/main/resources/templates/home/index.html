@@ -16,16 +16,15 @@
 </div>
 
 <div class="row">
-    <div class="leftcolumn">
-        <div class="card">
-            <div class="fakeimg">
+    <div class="leftcolumn" style="width:100%">
+        <div class="card" style="text-align: center;">
+            <div class="fakeimg" style="width:40%;margin-left:30%;margin-right:50%;">
                 <form id="form" th:action="@{/login}" method="post">
                     <label>Логин:</label><br>
                     <input type="text" name="username" value=""><br>
                     <label>Пароль:</label><br>
                     <input type="password" name="password" value=""><br><br>
-                    <input type="submit" value="Войти">
-                    <h4> <a href="/registration">Зарегистрироваться</a></h4>
+                    <input type="submit" value="Войти" style="background-color: #333; color:white; width: 170px;">
                 </form>
             </div>
         </div>

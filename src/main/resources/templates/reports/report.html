@@ -28,18 +28,24 @@
                 <table th:unless="${CurrentReports.isEmpty()}" id="table" border="1">
                     <thead>
                     <th>Заявка</th>
+                    <th>Владелец</th>
                     <th>Дата</th>
                     <th>Статус</th>
                     <th></th>
                     </thead>
                     <tr th:each="Report :${CurrentReports}">
                         <td th:utext="${Report.report}"></td>
+                        <td th:utext="${Report.owner}"></td>
                         <td width="200" th:utext="${Report.date}"></td>
                         <td width="200" th:utext="${Report.status}"></td>
-                        <td width="50">
-                            <form action="/reports/update" target="GET">
-                                <input type="hidden" name="compId" th:value="${Report.id}">
-                                <button>Редактировать</button>
+                        <td>
+                            <form action="/reports" method="post">
+                                <input type="hidden" name="reportId" th:value="${Report.id}"/>
+                                <label>Изменить статус</label><br>
+                                <select name="action">
+                                    <option name="action" th:each="p : ${listOfTypes}" th:value="${p}" th:text="${p}" />
+                                </select><br>
+                                <button type="submit" style="background-color: #333; color:white; width: 170px;">Изменить статус</button>
                             </form>
                         </td>
                     </tr>
@@ -51,7 +57,7 @@
     <div class="rightcolumn">
         <div class="card">
             <h2>Обо мне</h2>
-            <div class="fakeimg" style="height:100px;"><img src="@{/images/IRNITU.jpg}" width="100%"
+            <div class="fakeimg" style="height:100px;"><img th:src="@{/images/IRNITU.jpg}" width="100%"
                                                             height="100%">
             </div>
             <p>Hello, my name is Vladislav<br>I am student of INRTU</p>
@@ -61,7 +67,7 @@
 
 
 <div class="footer">
-    <h2>Footer</h2>
+    <h2></h2>
 </div>
 
 </body>
