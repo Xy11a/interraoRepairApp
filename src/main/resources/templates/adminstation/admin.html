@@ -29,15 +29,13 @@
                     <th>ID</th>
                     <th>Username</th>
                     <th>Password</th>
-                    <th>Enabled</th>
                     <th>Role</th>
                     </thead>
-                    <tr th:each="user :@{allUsers}">
-                        <td th:utext="@{user.id}"></td>
-                        <td th:utext="@{user.username}"></td>
-                        <td th:utext="@{user.password}"></td>
-                        <td th:utext="@{user.isEnabled()}"></td>
-                        <td th:each="role :@{user.roles}"></td>
+                    <tr th:each="user :${allUsers}">
+                        <td th:utext="${user.id}"></td>
+                        <td th:utext="${user.username}"></td>
+                        <td th:utext="${user.password}"></td>
+                        <td th:each="role :${user.roles}"></td>
                         <td>
                             <form th:action="@{/admin}" method="POST">
                                 <input type="hidden" name="userId" value="@{user.id}"/>

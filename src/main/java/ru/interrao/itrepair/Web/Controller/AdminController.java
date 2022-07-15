@@ -1,5 +1,7 @@
 package ru.interrao.itrepair.Web.Controller;
 
+import org.springframework.security.core.Authentication;
+import ru.interrao.itrepair.Web.Entity.Auth.User;
 import ru.interrao.itrepair.Web.Services.ServiceImplementations.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,9 +17,12 @@ public class AdminController {
     private UserService userService;
 
     @GetMapping("/admin")
-    public String userList(Model model) {
+    public String userList(Model model, Authentication authentication) {
+        User user = userService.getUserByUsername(authentication.getName());
+        model.addAttribute("CurrentUser",user);
+
         model.addAttribute("allUsers", userService.allUsers());
-        return "admin";
+        return "/adminstation/admin";
     }
 
     @PostMapping("/admin")

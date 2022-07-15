@@ -28,7 +28,7 @@
             <h5>ОИТиТ, 2022г</h5>
             <div class="fakeimg" style="height:200px;">
                 <span th:if="${CurrentReports.isEmpty()}"><h2>Нет заявок на ремонт</h2></span>
-                <table th:unless="${CurrentReports.isEmpty()}" id="comp-table" border="1">
+                <table th:unless="${CurrentReports.isEmpty()}" id="table" border="1">
                     <thead>
                     <th>Заявка</th>
                     <th>Дата</th>

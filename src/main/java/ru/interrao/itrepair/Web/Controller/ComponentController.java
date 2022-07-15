@@ -36,7 +36,9 @@ public class ComponentController {
     }
 
     @GetMapping("/components/new")
-    public String createComponent(Model model) {
+    public String createComponent(Model model,Authentication authentication) {
+        User user = userService.getUserByUsername(authentication.getName());
+        model.addAttribute("CurrentUser",user);
         Component comp = new Component();
         model.addAttribute("ComponentObj", comp);
         model.addAttribute("listOfTypes", Arrays.asList(ComponentEnum.values()));
@@ -52,7 +54,9 @@ public class ComponentController {
 
 
     @GetMapping("/components/update")
-    public String updatePage(@RequestParam(required = true, defaultValue = "") Integer compId, Model model) {
+    public String updatePage(@RequestParam(required = true, defaultValue = "") Integer compId, Model model,Authentication authentication) {
+        User user = userService.getUserByUsername(authentication.getName());
+        model.addAttribute("CurrentUser",user);
         model.addAttribute("updateComp", service.get(compId));
         return "components/CompUpdate";
     }
