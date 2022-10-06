@@ -24,6 +24,7 @@
                     <input type="text" name="username" value=""><br>
                     <label>Пароль:</label><br>
                     <input type="password" name="password" value=""><br><br>
+                    <p th:if="${LoginError}" class="error">Неверное имя пользователя или пароль</p>
                     <input type="submit" value="Войти" style="background-color: #333; color:white; width: 170px;">
                 </form>
             </div>

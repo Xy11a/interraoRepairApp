@@ -46,12 +46,14 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 //Настройка для входа в систему
                 .formLogin()
                 .loginPage("/login")
-                .failureUrl("/login&fucked=true")
+                .failureUrl("/login-fail")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 //Перенарпавление на главную страницу после успешного входа
                 .defaultSuccessUrl("/")
                 .permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/error/403.html")
                 .and()
                 .logout()
                 .permitAll()

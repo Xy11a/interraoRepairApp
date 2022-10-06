@@ -13,32 +13,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 
 @Controller
-public class RegistrationController
-{
+public class RegistrationController {
     @Autowired
     private UserService userService;
 
     @GetMapping("/registration")
-    public String registration(Model model)
-    {
+    public String registration(Model model) {
         model.addAttribute("userForm", new User());
         return "home/registration";
     }
 
     @PostMapping("/registration")
-    public String addUser(@ModelAttribute("userForm") @Valid User userForm, BindingResult bindingResult, Model model)
-    {
-        if(bindingResult.hasErrors()) return "home/registration";
-        System.out.println(userForm);
-        if(!userForm.getPassword().equals(userForm.getPasswordConfirm()))
-        {
-            model.addAttribute("passwordError","Пароли не совпадают");
-            return  "home/registration";
-        }
-        if(!userService.saveUser(userForm)){
-            model.addAttribute("usernameError","Пользователь с таким именем уже существует");
+    public String addUser(@ModelAttribute("userForm") @Valid User userForm, BindingResult bindingResult, Model model) {
+
+
+        if (bindingResult.hasErrors()) {
+
+            if (bindingResult.getRawFieldValue("password").toString().length() < 4)
+                model.addAttribute("LengthError", true);
             return "home/registration";
         }
+        if (!userForm.getPassword().equals(userForm.getPasswordConfirm())) {
+            model.addAttribute("passwordError", true);
+            return "home/registration";
+        }
+
+        if (!userService.saveUser(userForm)) {
+            model.addAttribute("usernameError", true);
+            return "home/registration";
+        }
+
+
+
         return "redirect:/login";
     }
 }

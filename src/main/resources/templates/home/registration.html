@@ -27,6 +27,9 @@
                     <input type="text" th:field="*{password}"><br>
                     <label >Повторите пароль:</label><br>
                     <input type="password" th:field="*{passwordConfirm}"><br>
+                    <span th:if="${passwordError}" class="error">Пароли не совпадают</span>
+                    <span th:if="${usernameError}" class="error">Пользователь с таким именем уже существует</span>
+                    <span th:if="${LengthError}" class="error">Минимальная длинна пароля - 4 символа</span>
                     <label></label><br>
                     <input type="submit" value="Зарегистрироваться" style="background-color: #333; color:white; width: 170px;">
                 </form>

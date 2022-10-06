@@ -33,4 +33,11 @@ public class TitleController {
         model.addAttribute("CurrentReports",reports);
         return "home/start";
     }
+
+    @RequestMapping(value = "/login-fail")
+    public String homeError(Model model)
+    {
+        model.addAttribute("LoginError", true);
+        return "home/index";
+    }
 }

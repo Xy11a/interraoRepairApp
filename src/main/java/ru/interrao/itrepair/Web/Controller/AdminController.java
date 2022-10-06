@@ -22,6 +22,7 @@ public class AdminController {
         model.addAttribute("CurrentUser",user);
 
         model.addAttribute("allUsers", userService.allUsers());
+
         return "/adminstation/admin";
     }
 

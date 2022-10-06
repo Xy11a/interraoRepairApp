@@ -26,16 +26,19 @@
             <div class="fakeimg">
                 <table id="table">
                     <thead>
-                    <th>ID</th>
                     <th>Username</th>
                     <th>Password</th>
                     <th>Role</th>
+                    <th>Commands</th>
                     </thead>
                     <tr th:each="user :${allUsers}">
-                        <td th:utext="${user.id}"></td>
                         <td th:utext="${user.username}"></td>
                         <td th:utext="${user.password}"></td>
-                        <td th:each="role :${user.roles}"></td>
+                        <td>
+                            <ul>
+                                <li th:each="role :${user.roles}"  th:text="${role.name}"></li>
+                            </ul>
+                        </td>
                         <td>
                             <form th:action="@{/admin}" method="POST">
                                 <input type="hidden" name="userId" value="@{user.id}"/>
@@ -52,7 +55,7 @@
     <div class="rightcolumn">
         <div class="card">
             <h2>Обо мне</h2>
-            <div class="fakeimg" style="height:100px;"><img src="@{/images/IRNITU.jpg}" width="100%"
+            <div class="fakeimg" style="height:100px;"><img th:src="@{/images/IRNITU.jpg}" width="100%"
                                                             height="100%">
             </div>
             <p>Hello, my name is Vladislav<br>I am student of INRTU</p>
