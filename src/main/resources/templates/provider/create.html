@@ -1,0 +1,52 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/start.css}" rel="stylesheet" type="text/css" href="/static/css/start.css">
+</head>
+<body>
+
+<div class="header">
+    <h1>Добавить поставщика</h1>
+    <p>Spring, MySQL, HTML, CSS</p>
+</div>
+
+<div class="topnav">
+    <a href="/">На главную</a>
+    <a href="/provider">К поставщикам</a>
+    <a href="/logout" style="float:right">Выход</a>
+    <span style="display: block; color: #f2f2f2;
+     padding: 14px 16px; float:right; text-decoration: none;" th:utext="${CurrentUser.username}"></span>
+</div>
+
+<div class="row">
+
+    <div class="leftcolumn" style="width:100%">
+        <div class="card" style="text-align: center;">
+            <div class="fakeimg" style="width:40%;margin-left:30%;margin-right:50%;">
+                <form action ="#" th:action="@{/provider/new}" method="post" th:object="${newProvider}">
+                    <label>Поставщик</label><br>
+                    <input type="text" th:field = "*{name}"><br>
+                    <label>Номер</label><br>
+                    <input type="tel" th:field = "*{number}"><br>
+                    <label>Адрес</label><br>
+                    <input type="text" th:field = "*{address}"><br>
+                    <label>Почта</label><br>
+                    <input type="email" th:field = "*{email}"><br>
+                    <button type="submit" style="background-color: #333; color:white; width: 170px;">Добавить поставщика</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="footer">
+    <h2></h2>
+</div>
+
+</body>
+</html>
+
+
+

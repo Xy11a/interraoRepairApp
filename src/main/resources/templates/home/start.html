@@ -15,6 +15,7 @@
     <a href="/reports/new">Создать заявку</a>
     <a href="/components">Компоненты</a>
     <a href="/reports">Заявки</a>
+    <a href="/provider">Поставщики</a>
     <a href="/admin">Пользователи</a>
     <a href="/logout" style="float:right">Выход</a>
     <span style="display: block; color: #f2f2f2;
@@ -25,7 +26,6 @@
     <div class="leftcolumn">
         <div class="card">
             <h2>Мои заявки</h2>
-            <h5>ОИТиТ, 2022г</h5>
             <div class="fakeimg" style="height:200px;">
                 <span th:if="${CurrentReports.isEmpty()}"><h2>Нет заявок на ремонт</h2></span>
                 <table th:unless="${CurrentReports.isEmpty()}" id="table" border="1">
@@ -42,7 +42,7 @@
                 </table>
             </div>
             <p>Внимание!</p>
-            <p>Заявки обработываются в течении 30 минут.</p>
+            <p>Заявки обрабатываются в течении 30 минут.</p>
         </div>
         <!--
         <div class="card">

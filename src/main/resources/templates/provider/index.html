@@ -7,13 +7,13 @@
 <body>
 
 <div class="header">
-    <h1>Repair Control</h1>
+    <h1>Provider Control</h1>
     <p>Spring, MySQL, HTML, CSS</p>
 </div>
 
 <div class="topnav">
     <a href="/">На главную</a>
-    <a href="/components/new">Добавить компонент</a>
+    <a href="/provider/new">Добавить поставщика</a>
     <a href="/logout" style="float:right">Выход</a>
     <span style="display: block; color: #f2f2f2;
      padding: 14px 16px; float:right; text-decoration: none;" th:utext="${CurrentUser.username}"></span>
@@ -23,30 +23,30 @@
     <div class="leftcolumn">
         <div class="card">
             <div class="fakeimg">
-                <span th:if="${CurrentReports!=null  and CurrentReports.isEmpty()}"><h2>Нет заявок на ремонт</h2></span>
-                <table id="table" border="1">
+                <span th:if="${CurrentProviders!=null and CurrentProviders.isEmpty()}"><h2>Нет поставщиков</h2></span>
+                <table th:unless="${CurrentProviders.isEmpty()}" id="table" border="1">
                     <thead>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Values</th>
-                    <th>Amount</th>
+                    <th>Поставщик</th>
+                    <th>Номер телефона</th>
+                    <th>Адрес</th>
+                    <th>Почта</th>
                     <th></th>
                     <th></th>
                     </thead>
-                    <tr th:each="component :${CurrentReports}">
-                        <td th:utext="${component.type}"></td>
-                        <td th:utext="${component.name}"></td>
-                        <td th:utext="${component.values}"></td>
-                        <td th:utext="${component.amount}"></td>
+                    <tr th:each="provider :${CurrentProviders}">
+                        <td th:utext="${provider.name}"></td>
+                        <td th:utext="${provider.number}"></td>
+                        <td th:utext="${provider.address}"></td>
+                        <td th:utext="${provider.email}"></td>
                         <td width="100">
-                            <form action="/components/update" target="GET">
-                                <input type="hidden" name="compId" th:value="${component.id}">
+                            <form action="/provider/update" target="GET">
+                                <input type="hidden" name="providerId" th:value="${provider.id}">
                                 <button>Редактировать</button>
                             </form>
                         </td>
                         <td width="100">
-                            <form th:action="@{/components}" method="POST">
-                                <input type="hidden" name="userId" th:value="${component.id}"/>
+                            <form th:action="@{/provider}" method="POST">
+                                <input type="hidden" name="providerId" th:value="${provider.id}"/>
                                 <input type="hidden" name="action" value="delete"/>
                                 <button type="submit">Удалить</button>
                             </form>

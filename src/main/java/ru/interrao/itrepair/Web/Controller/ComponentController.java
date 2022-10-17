@@ -16,7 +16,7 @@ import java.util.Arrays;
 @Controller
 public class ComponentController {
     @Autowired
-    ComponentServiceImpl service;
+    private ComponentServiceImpl service;
     @Autowired
     private UserService userService;
 
