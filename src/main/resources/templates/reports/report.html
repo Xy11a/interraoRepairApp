@@ -30,6 +30,7 @@
                     <th>Заявка</th>
                     <th>Владелец</th>
                     <th>Дата</th>
+                    <th>Компоненты</th>
                     <th>Статус</th>
                     <th></th>
                     </thead>
@@ -37,6 +38,7 @@
                         <td th:utext="${Report.report}"></td>
                         <td th:utext="${Report.owner}"></td>
                         <td width="200" th:utext="${Report.date}"></td>
+                        <td style="text-align: center;"><a th:href="@{'/reports/used/' + ${Report.getId()}}">Link</a></td>
                         <td width="200" th:utext="${Report.status}"></td>
                         <td>
                             <form action="/reports" method="post">

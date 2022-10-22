@@ -26,6 +26,7 @@ public class TitleController {
     public String home(Authentication authentication, Model model)
     {
         User user = Userservice.getUserByUsername(authentication.getName());
+        System.out.println("Reports");
         List<Report> reports = reportService.getAll().stream().filter(report -> report.getOwner().equals(user.getUsername())).collect(Collectors.toList());
 
         System.out.println(reports);

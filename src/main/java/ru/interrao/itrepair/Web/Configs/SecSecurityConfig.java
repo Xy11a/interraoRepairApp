@@ -19,7 +19,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     UserService userService;
 
     @Autowired
-    private DataSource dataSourse;
+    private DataSource dataSource;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -63,7 +63,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
-        .dataSource(dataSourse).passwordEncoder(bCryptPasswordEncoder())
+        .dataSource(dataSource).passwordEncoder(bCryptPasswordEncoder())
         .usersByUsernameQuery("SELECT username, password, 'true' as enabled from user where username = ?")
         .authoritiesByUsernameQuery("select u.username, r.name from user u, role r, user_roles ur\n" +
                 "where ur.user_id = u.id and ur.roles_id = r.id and u.username = ?");

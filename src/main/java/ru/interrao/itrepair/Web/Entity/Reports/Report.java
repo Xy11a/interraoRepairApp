@@ -3,18 +3,17 @@ package ru.interrao.itrepair.Web.Entity.Reports;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.interrao.itrepair.Web.Entity.Auth.User;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.io.Serializable;
+import java.util.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "Reports")
 @Table(name = "Reports")
-
-public class Report {
+public class Report implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
