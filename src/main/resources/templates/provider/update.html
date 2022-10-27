@@ -7,14 +7,14 @@
 <body>
 
 <div class="header">
-    <h1>Редактировать поставщика</h1>
+    <h1>Edit Provider</h1>
     <p>Spring, MySQL, HTML, CSS</p>
 </div>
 
 <div class="topnav">
-    <a href="/">На главную</a>
-    <a href="/components">Редактировать поставщика</a>
-    <a href="/logout" style="float:right">Выход</a>
+    <a href="/">Home</a>
+    <a href="/provider">Providers</a>
+    <a href="/logout" style="float:right">Exit</a>
     <span style="display: block; color: #f2f2f2;
      padding: 14px 16px; float:right; text-decoration: none;" th:utext="${CurrentUser.username}"></span>
 </div>
@@ -26,15 +26,15 @@
             <div class="fakeimg" style="width:40%;margin-left:30%;margin-right:50%;">
                 <form action ="#" th:action="@{/provider/update}" method="post" th:object="${curProvider}">
                     <input type="hidden" th:field="*{id}" th:value="curProvider.id">
-                    <label>Поставщик</label><br>
+                    <label>Provider</label><br>
                     <input type="text" th:field = "*{name}" th:value="curProvider.name"><br>
-                    <label>Телефон</label><br>
+                    <label>Number</label><br>
                     <input type="tel" th:field = "*{number}" th:value="curProvider.number"><br>
-                    <label>Адрес</label><br>
+                    <label>Address</label><br>
                     <input type="text" th:field = "*{address}" th:value="curProvider.address"><br>
-                    <label>Почта:</label><br>
+                    <label>Email:</label><br>
                     <input type="email" th:field = "*{email}" th:value="curProvider.email"><br>
-                    <button type="submit" style="background-color: #333; color:white; width: 170px;">Изменить поставщика</button>
+                    <button type="submit" style="background-color: #333; color:white; width: 170px;">Edit provider</button>
                 </form>
             </div>
         </div>

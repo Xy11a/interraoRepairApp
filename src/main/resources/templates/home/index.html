@@ -12,7 +12,7 @@
 </div>
 
 <div class="topnav">
-    <a href="/registration" style="float:right">Регистрация</a>
+    <a href="/registration" style="float:right">Registration</a>
 </div>
 
 <div class="row">
@@ -20,12 +20,12 @@
         <div class="card" style="text-align: center;">
             <div class="fakeimg" style="width:40%;margin-left:30%;margin-right:50%;">
                 <form id="form" th:action="@{/login}" method="post">
-                    <label>Логин:</label><br>
+                    <label>Username:</label><br>
                     <input type="text" name="username" value=""><br>
-                    <label>Пароль:</label><br>
+                    <label>Password:</label><br>
                     <input type="password" name="password" value=""><br><br>
-                    <p th:if="${LoginError}" class="error">Неверное имя пользователя или пароль</p>
-                    <input type="submit" value="Войти" style="background-color: #333; color:white; width: 170px;">
+                    <p th:if="${LoginError}" class="error">Wrong password or username</p>
+                    <input type="submit" value="LogIn" style="background-color: #333; color:white; width: 170px;">
                 </form>
             </div>
         </div>

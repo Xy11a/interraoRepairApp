@@ -87,5 +87,10 @@ public class UserService implements UserDetailsService {
                 .setParameter("paramId", idMin).getResultList();
     }
 
+    public boolean updateUser(User user) {
+        userRepository.save(user);
+        return true;
+    }
+
 
 }

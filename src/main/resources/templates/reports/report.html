@@ -12,9 +12,9 @@
 </div>
 
 <div class="topnav">
-    <a href="/">На главную</a>
-    <a href="/reports/new">Создать заявку</a>
-    <a href="/logout" style="float:right">Выход</a>
+    <a href="/">Home</a>
+    <a href="/reports/new">Make Report</a>
+    <a href="/logout" style="float:right">Logout</a>
     <span style="display: block; color: #f2f2f2;
      padding: 14px 16px; float:right; text-decoration: none;" th:utext="${CurrentUser.username}"></span>
 </div>
@@ -24,30 +24,35 @@
     <div class="leftcolumn">
         <div class="card">
             <div class="fakeimg">
-                <span th:if="${CurrentReports!=null  or CurrentReports.isEmpty()}"><h2>Нет заявок на ремонт</h2></span>
+                <span th:if="${CurrentReports.isEmpty() or CurrentReports == null}"><h2>There are no report at the moment</h2></span>
                 <table th:unless="${CurrentReports.isEmpty()}" id="table" border="1">
                     <thead>
-                    <th>Заявка</th>
-                    <th>Владелец</th>
-                    <th>Дата</th>
-                    <th>Компоненты</th>
-                    <th>Статус</th>
+                    <th>Report</th>
+                    <th>Owner</th>
+                    <th>Date</th>
+                    <th>Components</th>
+                    <th>Status</th>
                     <th></th>
                     </thead>
                     <tr th:each="Report :${CurrentReports}">
                         <td th:utext="${Report.report}"></td>
                         <td th:utext="${Report.owner}"></td>
                         <td width="200" th:utext="${Report.date}"></td>
-                        <td style="text-align: center;"><a th:href="@{'/reports/used/' + ${Report.getId()}}">Link</a></td>
+                        <td style="text-align: center;">
+                            <form th:action="@{/reports/used/{id}(id=${Report.getId()})}">
+                                <input style="background-color: #333; color:white; width: 170px;" type="submit" value="Component list">
+                            </form>
+
+                        </td>
                         <td width="200" th:utext="${Report.status}"></td>
                         <td>
                             <form action="/reports" method="post">
                                 <input type="hidden" name="reportId" th:value="${Report.id}"/>
-                                <label>Изменить статус</label><br>
+                                <label>Set status</label><br>
                                 <select name="action">
                                     <option name="action" th:each="p : ${listOfTypes}" th:value="${p}" th:text="${p}" />
-                                </select><br>
-                                <button type="submit" style="background-color: #333; color:white; width: 170px;">Изменить статус</button>
+                                </select>
+                                <button type="submit" style="background-color: #333; color:white; width: 170px;">Set Status</button>
                             </form>
                         </td>
                     </tr>
@@ -58,11 +63,11 @@
 
     <div class="rightcolumn">
         <div class="card">
-            <h2>Обо мне</h2>
+            <h2>About me</h2>
             <div class="fakeimg" style="height:100px;"><img th:src="@{/images/IRNITU.jpg}" width="100%"
                                                             height="100%">
             </div>
-            <p>Hello, my name is Vladislav<br>I am student of INRTU</p>
+            <p>Hello, my name is Vladislav<br>I am student of iPolytech</p>
         </div>
     </div>
 </div>

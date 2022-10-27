@@ -7,14 +7,14 @@
 <body>
 
 <div class="header">
-    <h1>Repair Control</h1>
+    <h1>Component Control</h1>
     <p>Spring, MySQL, HTML, CSS</p>
 </div>
 
 <div class="topnav">
-    <a href="/">На главную</a>
-    <a href="/components/new">Добавить компонент</a>
-    <a href="/logout" style="float:right">Выход</a>
+    <a href="/">Head</a>
+    <a href="/components/new">Add component</a>
+    <a href="/logout" style="float:right">Exit</a>
     <span style="display: block; color: #f2f2f2;
      padding: 14px 16px; float:right; text-decoration: none;" th:utext="${CurrentUser.username}"></span>
 </div>
@@ -41,14 +41,14 @@
                         <td width="100">
                             <form action="/components/update" target="GET">
                                 <input type="hidden" name="compId" th:value="${component.id}">
-                                <button>Редактировать</button>
+                                <button>Edit</button>
                             </form>
                         </td>
                         <td width="100">
                             <form th:action="@{/components}" method="POST">
                                 <input type="hidden" name="userId" th:value="${component.id}"/>
                                 <input type="hidden" name="action" value="delete"/>
-                                <button type="submit">Удалить</button>
+                                <button type="submit">Delete</button>
                             </form>
                         </td>
                     </tr>
@@ -59,7 +59,7 @@
 
     <div class="rightcolumn">
         <div class="card">
-            <h2>Обо мне</h2>
+            <h2>About me</h2>
             <div class="fakeimg" style="height:100px;"><img th:src="@{/images/IRNITU.jpg}" width="100%"
                                                             height="100%">
             </div>
@@ -70,7 +70,7 @@
 </div>
 
 <div class="footer">
-    <h2>Footer</h2>
+    <h2></h2>
 </div>
 
 </body>

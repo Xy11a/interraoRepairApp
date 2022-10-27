@@ -7,14 +7,14 @@
 <body>
 
 <div class="header">
-    <h1>Редактировать компонент</h1>
+    <h1>Edit Component</h1>
     <p>Spring, MySQL, HTML, CSS</p>
 </div>
 
 <div class="topnav">
-    <a href="/">На главную</a>
-    <a href="/components">Создать заявку</a>
-    <a href="/logout" style="float:right">Выход</a>
+    <a href="/">Home</a>
+    <a href="/components">Components</a>
+    <a href="/logout" style="float:right">Exit</a>
     <span style="display: block; color: #f2f2f2;
      padding: 14px 16px; float:right; text-decoration: none;" th:utext="${CurrentUser.username}"></span>
 </div>
@@ -26,15 +26,15 @@
             <div class="fakeimg" style="width:40%;margin-left:30%;margin-right:50%;">
                 <form action ="#" th:action="@{/components/update}" method="post" th:object="${updateComp}">
                     <input type="hidden" th:field="*{id}" th:value="updateComp.id">
-                    <label>Тип компонента:</label><br>
+                    <label>Type:</label><br>
                     <input type="text" th:field = "*{type}" th:value="updateComp.type" readonly><br>
-                    <label>Название:</label><br>
+                    <label>Name:</label><br>
                     <input type="text" th:field = "*{name}" th:value="updateComp.name"><br>
-                    <label>Значения:</label><br>
+                    <label>Values:</label><br>
                     <input type="text" th:field = "*{values}" th:value="updateComp.values"><br>
-                    <label>Количество:</label><br>
+                    <label>Amount:</label><br>
                     <input type="number" th:field = "*{amount}" th:value="updateComp.amount"><br>
-                    <button type="submit" style="background-color: #333; color:white; width: 170px;">Изменить компонент</button>
+                    <button type="submit" style="background-color: #333; color:white; width: 170px;">Edit component</button>
                 </form>
             </div>
         </div>

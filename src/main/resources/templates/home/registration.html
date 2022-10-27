@@ -7,12 +7,12 @@
 <body>
 
 <div class="header">
-    <h1>Регистрация</h1>
+    <h1>Registration</h1>
     <p>Spring, MySQL, HTML, CSS</p>
 </div>
 
 <div class="topnav">
-    <a href="/login" style="float:right">Вход</a>
+    <a href="/login" style="float:right">LogIn</a>
 </div>
 
 <div class="row">
@@ -21,17 +21,17 @@
         <div class="card" style="text-align: center;">
             <div class="fakeimg" style="width:40%;margin-left:30%;margin-right:50%;">
                 <form id="form" th:action="@{/registration}" th:object="${userForm}" method="POST">
-                    <label >Логин:</label><br>
+                    <label >Username:</label><br>
                     <input type="text" th:field="*{username}"><br>
-                    <label >Пароль:</label><br>
+                    <label >Password:</label><br>
                     <input type="text" th:field="*{password}"><br>
-                    <label >Повторите пароль:</label><br>
+                    <label >Password confirm:</label><br>
                     <input type="password" th:field="*{passwordConfirm}"><br>
-                    <span th:if="${passwordError}" class="error">Пароли не совпадают</span>
-                    <span th:if="${usernameError}" class="error">Пользователь с таким именем уже существует</span>
-                    <span th:if="${LengthError}" class="error">Минимальная длинна пароля - 4 символа</span>
+                    <span th:if="${passwordError}" class="error">Password are not similar</span>
+                    <span th:if="${usernameError}" class="error">This username have already taken</span>
+                    <span th:if="${LengthError}" class="error">Min password length - 4</span>
                     <label></label><br>
-                    <input type="submit" value="Зарегистрироваться" style="background-color: #333; color:white; width: 170px;">
+                    <input type="submit" value="Register" style="background-color: #333; color:white; width: 170px;">
                 </form>
             </div>
         </div>
